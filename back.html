@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Info</title>
+</head>
+<body>
+    <h3 id="appendback"></h3>
+	<textarea name="" id="back" cols="30" rows="25" style="font-weight: bolder; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; border-color: greenyellow;"></textarea>
+</body>
+<script>
+const url = 'https://gym-fit.p.rapidapi.com/exercises/search?bodyPart=Back';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '71fdc23500msh88d7978753c439fp116ffcjsnba702c04a20d',
+		'X-RapidAPI-Host': 'gym-fit.p.rapidapi.com'
+	}
+};
+document.getElementById("appendback").append("The Back Exercises are: ");
+ try{
+fetch(url,options).then(response => response.json()).then(response => {
+console.log(response);
+for (let i=0;i<response.length;i++){
+let z = response[i].name;
+document.getElementById("back").append(z + "\n\n");
+console.log(z)
+}})}
+catch (error) {
+	console.error(error);
+}
+</script>
+</html>
